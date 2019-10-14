@@ -1,5 +1,7 @@
 package com.deetree;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.PriorityQueue;
 
 public class MinCostToConnectRopes {
@@ -8,6 +10,11 @@ public class MinCostToConnectRopes {
         int[] ropesLength = {2, 4, 3};
 
         System.out.println(ConnectSticks(ropesLength));
+
+        List<Integer> test = new ArrayList<>();
+        test.add(1);
+
+        //int a = test.get
 
 
     }

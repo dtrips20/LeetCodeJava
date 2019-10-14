@@ -1,74 +1,109 @@
 package com.deetree;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class OptimalUtilization {
 
     public static void main(String[] args) {
+
         OptimalUtilization o = new OptimalUtilization();
-        List<int[]> a = new ArrayList<int[]>();
-        int[] a1 = {1, 3};
-        int[] a2 = {2, 5};
-        int[] a3 = {3, 7};
-        int[] a4 = {4, 10};
-        a.add(a1);
-        a.add(a2);
-        a.add(a3);
-        a.add(a4);
+        List<Integer> l1 = new ArrayList<>();
+        l1.add(1);
+        l1.add(3000);
 
-        List<int[]> b = new ArrayList<int[]>();
-        int[] b1 = {1, 2};
-        int[] b2 = {2, 3};
-        int[] b3 = {3, 4};
-        int[] b4 = {4, 5};
-        b.add(b1);
-        b.add(b2);
-        b.add(b3);
-        b.add(b4);
+        List<Integer> l2 = new ArrayList<>();
+        l2.add(2);
+        l2.add(5000);
 
-        for (int[] r : o.getPairs(a, b, 10)) {
-            for (int ans : r) {
-                System.out.println(ans);
-            }
-            System.out.println("========");
-        }
+        List<Integer> l3 = new ArrayList<>();
+        l3.add(3);
+        l3.add(7000);
+
+
+        List<Integer> l4 = new ArrayList<>();
+        l4.add(4);
+        l4.add(10000);
+
+        List<List<Integer>> flist = new ArrayList<>();
+        flist.add(l1);
+        flist.add(l2);
+        flist.add(l3);
+        flist.add(l4);
+
+
+        List<Integer> ll1 = new ArrayList<>();
+        ll1.add(1);
+        ll1.add(2000);
+
+        List<Integer> ll2 = new ArrayList<>();
+        ll2.add(2);
+        ll2.add(3000);
+
+        List<Integer> ll3 = new ArrayList<>();
+        ll3.add(3);
+        ll3.add(4000);
+
+
+        List<Integer> ll4 = new ArrayList<>();
+        ll4.add(4);
+        ll4.add(5000);
+
+        List<List<Integer>> blist = new ArrayList<>();
+        blist.add(ll1);
+        blist.add(ll2);
+        blist.add(ll3);
+        blist.add(ll4);
+
+
+        List<List<Integer>> result = o.optimalUtilization(10000, flist, blist);
 
 
     }
 
+    // METHOD SIGNATURE BEGINS, THIS METHOD IS REQUIRED
+    private List<List<Integer>> optimalUtilization(int maxTravelDist,
+                                                   List<List<Integer>> forwardRouteList,
+                                                   List<List<Integer>> returnRouteList) {
 
-    private List<int[]> getPairs(List<int[]> a, List<int[]> b, int target) {
-        Collections.sort(a, (i, j) -> i[1] - j[1]);
-        Collections.sort(b, (i, j) -> i[1] - j[1]);
-        List<int[]> result = new ArrayList<>();
-        int max = Integer.MIN_VALUE;
-        int m = a.size();
-        int n = b.size();
-        int i = 0;
-        int j = n - 1;
-        while (i < m && j >= 0) {
-            int sum = a.get(i)[1] + b.get(j)[1];
-            if (sum > target) {
-                --j;
-            } else {
-                if (max <= sum) {
-                    if (max < sum) {
-                        max = sum;
-                        result.clear();
-                    }
-                    result.add(new int[]{a.get(i)[0], b.get(j)[0]});
-                    int index = j - 1;
-                    while (index >= 0 && b.get(index)[1] == b.get(index + 1)[1]) {
-                        result.add(new int[]{a.get(i)[0], b.get(index--)[0]});
-                    }
+        List<List<Integer>> result = new ArrayList<>();
+
+        forwardRouteList = forwardRouteList.stream().sorted((x1, x2) -> Integer.compare(x2.get(1), x1.get(1))).collect(Collectors.toList());
+
+        returnRouteList = returnRouteList.stream().sorted((x1, x2) -> Integer.compare(x1.get(1), x2.get(1))).collect(Collectors.toList());
+
+
+        int currentMaxDistance = 0;
+
+        for (List<Integer> fRoute : forwardRouteList) {
+            for (List<Integer> bRoute : returnRouteList) {
+                int forward = fRoute.get(1);
+                int backward = bRoute.get(1);
+
+                int currentDistance = forward + backward;
+
+                if (currentDistance > currentMaxDistance && currentDistance <= maxTravelDist) {
+                    result.clear();
+
+                    result.add(Arrays.asList(fRoute.get(0), bRoute.get(0)));
+                    currentMaxDistance = currentDistance;
+                    continue;
                 }
-                ++i;
+                if (currentDistance == currentMaxDistance && currentDistance <= maxTravelDist) {
+                    result.add(Arrays.asList(fRoute.get(0), bRoute.get(0)));
+
+                }
+                if (currentDistance > maxTravelDist) {
+                    break;
+                }
             }
         }
         return result;
+
+
+        // WRITE YOUR CODE HERE
     }
-
-
 }
