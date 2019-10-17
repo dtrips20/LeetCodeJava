@@ -61,7 +61,7 @@ public class AddTwoNumbers {
             carry = sum / 10;
 
             dummy.next = new ListNode(sum % 10);
-            ;
+
             dummy = dummy.next;
         }
         if (carry > 0) {
