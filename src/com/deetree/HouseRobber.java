@@ -4,29 +4,25 @@ public class HouseRobber {
 
     public static void main(String[] args) {
         HouseRobber house = new HouseRobber();
+
+
         System.out.println((house.rob(new int[]{2, 1, 1, 1, 2})));
 
     }
 
-    private int rob(int[] num) {
-        int prevMax = 0;
-        int currMax = 0;
+    private int rob(int[] nums) {
 
-        int even = 0;
-        int odd = 0;
+        if (nums.length == 0)
+            return 0;
+        if (nums.length == 1)
+            return nums[0];
 
-        for (int x = 0; x <= num.length - 1; x++) {
-            if (x % 2 == 0) {
-                even = Math.max(even + num[x], odd);
-            } else {
-                odd = Math.max(odd + num[x], even);
-            }
+        nums[1] = Math.max(nums[0], nums[1]);
 
-
-            //int temp = currMax;
-            //currMax = Math.max(prevMax + num[x], currMax);
-            //prevMax = temp;
+        for (int i = 2; i < nums.length; i++) {
+            nums[i] = Math.max(nums[i - 1], (nums[i] + nums[i - 2]));
         }
-        return Math.max(even, odd);        //return currMax;
+
+        return nums[nums.length - 1];
     }
 }
