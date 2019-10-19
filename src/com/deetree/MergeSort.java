@@ -1,7 +1,6 @@
 package com.deetree;
 
-import sun.lwawt.macosx.CSystemTray;
-import sun.tools.jconsole.JConsole;
+
 
 public class MergeSort {
 
