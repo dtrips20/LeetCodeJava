@@ -55,3 +55,15 @@ public class Top_K_Frequent_Elements {
         return result;
     }
 }
+/*
+Solution : The first step is to build a hash map element -> its frequency.
+In Java we could use data structure HashMap but have to fill it manually.
+This step takes O(N) time where N is number of elements in the list.
+The second step is to build a heap.
+The time complexity of adding an element in a heap is O(log k) and we do it N times that means O(N log(k))
+time complexity for this step.
+
+The last step to build an output list has
+O(k log(k)) time complexity.
+
+*/
