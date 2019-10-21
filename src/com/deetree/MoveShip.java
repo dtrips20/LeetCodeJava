@@ -36,6 +36,7 @@ public class MoveShip {
                 for (int i = 0; i < size; i++) {
                     Coordinate coordinate = queue.poll();
 
+                    assert coordinate != null;
                     int x = coordinate.x;
                     int y = coordinate.y;
 
