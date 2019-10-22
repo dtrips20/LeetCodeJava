@@ -1,4 +1,23 @@
+/*
+Given a binary tree, imagine yourself standing on the right side of it,
+return the values of the nodes you can see ordered from top to bottom.
+
+Example:
+
+Input: [1,2,3,null,5,null,4]
+Output: [1, 3, 4]
+Explanation:
+
+   1            <---
+ /   \
+2     3         <---
+ \     \
+  5     4       <---
+ */
 package com.deetree;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RightSideViewOfTree {
 
@@ -14,8 +33,11 @@ public class RightSideViewOfTree {
 
 
         RightSideViewOfTree view = new RightSideViewOfTree();
-        view.ViewRightSide(rootNode, 1);
+        List<Integer> result = view.rightSideView(rootNode);
 
+        for (int n : result) {
+            System.out.println(n);
+        }
         /*
                         100
                       /    \
@@ -32,21 +54,30 @@ public class RightSideViewOfTree {
 
     }
 
-    int MAX_LEVEL = 0;
+    int MAX_LEVEL = -1;
+    List<Integer> values = new ArrayList<>();
 
-    public void ViewRightSide(TreeNode node, int level) {
-        if (node == null)
-            return;
+    public List<Integer> rightSideView(TreeNode root) {
+
+
+        return helper(root, 0);
+    }
+
+    public List<Integer> helper(TreeNode root, int level) {
+        if (root == null)
+            return values;
 
         if (MAX_LEVEL < level) {
-            System.out.println(node.val);
+            values.add(root.val);
+
             MAX_LEVEL = level;
         }
 
 
-        ViewRightSide(node.right, level + 1);
-        ViewRightSide(node.left, level + 1);
+        helper(root.right, level + 1);
+        helper(root.left, level + 1);
 
-
+        return values;
     }
+
 }
