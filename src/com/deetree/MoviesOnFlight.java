@@ -22,16 +22,42 @@ Explanation: movieDurations[0] + movieDurations[6] = 90 + 125 = 215 is the maxim
 
  */
 
-import java.util.Arrays;
+import java.util.*;
 
 public class MoviesOnFlight {
 
     public static void main(String[] args) {
         int[] array = {90, 85, 75, 60, 120, 150, 125};
+        int d = 250;
+        int target = 30;
+        Map<Integer, Integer> map = new HashMap<>();
+
+        for (int i = 0; i < array.length; i++) {
+            //assuming that durations are unique
+            map.put(array[i], i);
+        }
 
         Arrays.sort(array);
-        // Queue<Coordinate> queue = new LinkedList<>();
 
+        int low = 0;
+        int high = array.length - 1;
+        int[] result = new int[]{-1, -1};
+        int min = 0;
+
+        while (low < high) {
+            int sum = array[low] + array[high];
+            if (sum < d - target) {
+                min = Math.max(min, sum);
+                result[0] = map.get(array[low]);
+                result[1] = map.get(array[high]);
+                low++;
+            } else {
+                high--;
+            }
+
+        }
+
+        System.out.println("[" + result[0] + "," + result[1] + "]");
 
     }
 

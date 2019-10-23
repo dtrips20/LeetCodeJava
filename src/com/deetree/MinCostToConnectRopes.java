@@ -6,7 +6,9 @@ import java.util.PriorityQueue;
 public class MinCostToConnectRopes {
 
     public static void main(String[] args) {
-        int[] ropesLength = {2, 4, 3};
+        int[] ropesLength = {2, 3, 4, 5};
+
+        //int[] ropesLength = {8,4,6,12};
 
         System.out.println(ConnectSticks(ropesLength));
     }
