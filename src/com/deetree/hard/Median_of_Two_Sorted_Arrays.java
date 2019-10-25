@@ -22,7 +22,7 @@ The median is (2 + 3)/2 = 2.5
 
 */
 
-package com.deetree.misc;
+package com.deetree.hard;
 
 public class Median_of_Two_Sorted_Arrays {
 
@@ -60,10 +60,6 @@ public class Median_of_Two_Sorted_Arrays {
         }
 
         if (sortedArray.length % 2 == 0) {
-
-            int leftElement = sortedArray.length / 2;
-            int lelement = sortedArray[leftElement - 1];
-            int relement = sortedArray[leftElement];
 
             return (double) (sortedArray[(sortedArray.length / 2) - 1] + sortedArray[(sortedArray.length / 2)]) / 2;
         } else
