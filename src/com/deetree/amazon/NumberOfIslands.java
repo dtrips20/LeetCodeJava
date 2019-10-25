@@ -1,4 +1,4 @@
-package com.deetree.amazon.medium;
+package com.deetree.amazon;
 
 /*
 Given a 2d grid map of '1's (land) and '0's (water),

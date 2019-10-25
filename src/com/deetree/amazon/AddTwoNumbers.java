@@ -1,8 +1,6 @@
-package com.deetree.amazon.medium;
+package com.deetree.amazon;
 
 import com.deetree.ListNode;
-
-import java.util.LinkedList;
 
 /*
 You are given two non-empty linked lists representing two non-negative integers.

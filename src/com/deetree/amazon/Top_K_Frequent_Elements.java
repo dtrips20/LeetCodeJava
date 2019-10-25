@@ -14,7 +14,7 @@ Note:
 You may assume k is always valid, 1 ≤ k ≤ number of unique elements.
 Your algorithm's time complexity must be better than O(n log n), where n is the array's size.
  */
-package com.deetree.amazon.medium;
+package com.deetree.amazon;
 
 import java.util.*;
 
@@ -23,7 +23,11 @@ public class Top_K_Frequent_Elements {
 
     public static void main(String[] args) {
         Top_K_Frequent_Elements k = new Top_K_Frequent_Elements();
-        List<Integer> results = k.topKFrequent(new int[]{1, 1, 1, 2, 2, 3}, 2);
+        List<Integer> results = k.topKFrequent(new int[]{4, 1, 1, 1, 2, 2, 3}, 2);
+
+        for (int i : results) {
+            System.out.println(i);
+        }
     }
 
     public List<Integer> topKFrequent(int[] nums, int k) {

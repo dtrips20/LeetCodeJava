@@ -21,7 +21,7 @@ Example:
 Input: [1,8,6,2,5,4,8,3,7]
 Output: 49
  */
-package com.deetree.amazon.medium;
+package com.deetree.amazon;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;

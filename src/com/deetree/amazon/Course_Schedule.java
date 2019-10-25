@@ -1,4 +1,4 @@
-package com.deetree.amazon.medium;
+package com.deetree.amazon;
 
 import java.util.ArrayList;
 

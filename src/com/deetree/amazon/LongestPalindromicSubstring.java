@@ -1,4 +1,4 @@
-package com.deetree.amazon.medium;
+package com.deetree.amazon;
 
 /*
 Given a string s, find the longest palindromic substring in s.
