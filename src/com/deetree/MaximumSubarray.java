@@ -46,7 +46,7 @@ public class MaximumSubarray {
         return max;
     }
     /*
-     O(n) solution
+     O(n log(n)) solution
      */
     private int maxSubArray(int[] nums) {
 
