@@ -1,5 +1,7 @@
 package com.deetree;
 
+import com.deetree.datastructure.TreeNode;
+
 /*
 Subtree of Another Tree
 Given two non-empty binary trees s and t, check whether tree t has exactly the same structure and node

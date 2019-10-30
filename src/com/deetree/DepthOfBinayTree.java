@@ -20,6 +20,8 @@ return its depth = 3.
  */
 package com.deetree;
 
+import com.deetree.datastructure.TreeNode;
+
 public class DepthOfBinayTree {
 
     public static void main(String[] args) {
