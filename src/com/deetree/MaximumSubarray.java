@@ -20,12 +20,31 @@ public class MaximumSubarray {
 
         MaximumSubarray sub = new MaximumSubarray();
         // System.out.println(sub.maxSubArray(new int[] {-2,1,-3,4,-1,2,1,-5,4}));
-        int[] arr = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
+        int[] nums = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
 
-        System.out.println(sub.Helper(arr, 0, arr.length - 1));
+        //System.out.println(sub.Helper(nums, 0, nums.length - 1));
+        System.out.println(sub.maxSubArray_Dynamic_Programming(nums));
+
+
 
     }
 
+    /*
+    Solve using Dynamic programming
+    Time Complexity : O(N)
+    Space Complexity: O(1)
+     */
+
+    public int maxSubArray_Dynamic_Programming(int[] nums) {
+        int max = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i - 1] > 0)
+                nums[i] = nums[i] + nums[i - 1];
+
+            max = Math.max(max, nums[i]);
+        }
+        return max;
+    }
     /*
      O(n) solution
      */
