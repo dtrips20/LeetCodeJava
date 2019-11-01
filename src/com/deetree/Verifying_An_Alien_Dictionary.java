@@ -45,27 +45,38 @@ public class Verifying_An_Alien_Dictionary {
 
     public static void main(String[] args) {
 
+        Verifying_An_Alien_Dictionary ver = new Verifying_An_Alien_Dictionary();
+        boolean ans = ver.isAlienSorted(new String[]{"hello", "leetcode"}, "hlabcdefgijkmnopqrstuvwxyz");
+
 
     }
 
-    public String addStrings(String num1, String num2) {
+    public boolean isAlienSorted(String[] words, String order) {
+        int[] index = new int[26];
+        for (int i = 0; i < order.length(); ++i)
+            index[order.charAt(i) - 'a'] = i;
 
-        int i = num1.length() - 1;
-        int j = num2.length() - 2;
-        int carry = 0;
+        search:
+        for (int i = 0; i < words.length - 1; ++i) {
+            String word1 = words[i];
+            String word2 = words[i + 1];
 
-        while (i <= 0 || j <= 0 || carry > 0) {
-            int a = (i >= 0) ? num1.charAt(i) - '0' : 0;
-            int b = (j >= 0) ? num2.charAt(j) - '0' : 0;
-            int c = a + b + carry;
+            // Find the first difference word1[k] != word2[k].
+            for (int k = 0; k < Math.min(word1.length(), word2.length()); ++k) {
+                if (word1.charAt(k) != word2.charAt(k)) {
+                    // If they compare badly, it's not sorted.
+                    if (index[word1.charAt(k) - 'a'] > index[word2.charAt(k) - 'a'])
+                        return false;
+                    continue search;
+                }
+            }
 
-            carry = c / 2;
-
-            i--;
-            j--;
+            // If we didn't find a first difference, the
+            // words are like ("app", "apple").
+            if (word1.length() > word2.length())
+                return false;
         }
 
-        return "";
+        return true;
     }
-
 }
