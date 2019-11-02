@@ -55,11 +55,11 @@ public class Monotonic_Array {
     }
 
     /*
-     Complexity Analysis
-     ====================================
-     Time Complexity: O(N), where N is the length of A.
+    Complexity Analysis
 
-     Space Complexity: O(1).
+     Time Complexity: O(N), where NN is the length of A.
+
+      Space Complexity: O(1)O(1).
      */
     public boolean isMonotonic(int[] A) {
 
