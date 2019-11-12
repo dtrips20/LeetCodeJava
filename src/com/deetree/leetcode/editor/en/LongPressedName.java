@@ -71,7 +71,23 @@
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public boolean isLongPressedName(String name, String typed) {
-        
+
+        char[] nch = name.toCharArray();
+        char[] tch = typed.toCharArray();
+
+        int cnt = 0;
+
+        for( int i = 0 ; i < nch.length ; ++)
+        {
+           while( nch[i] == tch[cnt])
+           {
+               cnt++;
+           }
+           i++;
+        }
+
+        return true;
+
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
