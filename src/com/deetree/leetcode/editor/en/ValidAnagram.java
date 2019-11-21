@@ -38,9 +38,20 @@ public class ValidAnagram {
             if ( s.length() != t.length())
                 return false;
 
+
+            char[] sch = s.toCharArray();
+            char[] tch = t.toCharArray();
+
+            Arrays.sort(sch);
+            Arrays.sort(tch);
+
+           return Arrays.equals(sch,tch);
+
+
+
           //  Hashtable
 
-  return false;
+
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
