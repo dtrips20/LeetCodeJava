@@ -24,7 +24,6 @@ NOTE: input types have been changed on April 15, 2019. Please reset to default c
 
 package com.deetree.leetcode.editor.en;
 
-import sun.awt.image.ImageWatched;
 
 import java.util.*;
 
