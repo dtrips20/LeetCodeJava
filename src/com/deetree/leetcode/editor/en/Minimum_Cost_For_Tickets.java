@@ -55,42 +55,27 @@ public class Minimum_Cost_For_Tickets {
 
     public static void main(String[] args) {
         Minimum_Cost_For_Tickets tickets = new Minimum_Cost_For_Tickets();
-        int result = tickets.mincostTickets(new int[]{1, 4, 6, 7, 8, 20}, new int[]{2, 7, 15});
+        System.out.println(tickets.mincostTickets(new int[]{1}, new int[]{2, 7, 15}));
 
     }
-
-    int[] costs;
-    Integer[] memo;
-    Set<Integer> dayset;
 
     public int mincostTickets(int[] days, int[] costs) {
-        this.costs = costs;
-        memo = new Integer[366];
-        dayset = new HashSet();
-        for (int d : days) dayset.add(d);
-
-        return dp(1);
-    }
-
-    public int dp(int i) {
-        if (i > 30)
-            return 0;
-        if (memo[i] != null)
-            return memo[i];
-
-        int ans;
-        if (dayset.contains(i)) {
-            ans = Math.min(dp(i + 1) + costs[0],
-                    dp(i + 7) + costs[1]);
-            ans = Math.min(ans, dp(i + 30) + costs[2]);
-        } else {
-            ans = dp(i + 1);
+        int[] dp = new int[366];
+        dp[0] = 0;
+        boolean[] daysTravel = new boolean[366];
+        for (int day : days) {
+            daysTravel[day] = true;
         }
-
-        memo[i] = ans;
-        return ans;
+        for (int i = 1; i < 366; i++) {
+            if (!daysTravel[i]) {
+                dp[i] = dp[i - 1];
+                continue;
+            }
+            int min = Math.min(dp[i - 1] + costs[0], dp[Math.max(0, i - 7)] + costs[1]);
+            min = Math.min(min, dp[Math.max(0, i - 30)] + costs[2]);
+            dp[i] = min;
+        }
+        return dp[365];
     }
-
-
 }
 
